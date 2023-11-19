@@ -10,8 +10,8 @@ import numpy as np
 import triangles_with_TODO as tri
 
 # ----- Topology -------------------------------------------------
-ex = np.array([0.,1.,0.])
-ey = np.array([0.,0.,1.])
+ex = np.array([0.,1.,0.]) #Tøyningsvektor i x-rettnig
+ey = np.array([0.,0.,1.]) #Tøyningsvektor i y-rettning
 
 th = 0.1
 ep = [1,th]
