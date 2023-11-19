@@ -161,7 +161,13 @@ def tri6_shape_functions(zeta):
 
     N6 = np.zeros(6)
 
-    # TODO: fill out missing parts (or reformulate completely)
+    #Zeta er triangular cordinates fra node 1, 2 og 3
+
+    for i in range(3):
+        j = cyclic_ijk[i + 1]
+        N6[i] = zeta[i]*(2*zeta[i] - 1)
+        N6[i + 2] = 4*zeta[i]*zeta[j]
+
 
     return N6
 

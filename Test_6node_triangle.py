@@ -14,13 +14,13 @@ cyclic_ijk = [0,1,2,0,1]      # Cyclic permutation of the nodes i,j,k
 ex = np.array([0.0,1.0,0.0, 0.5,0.5,0.0])
 ey = np.array([0.0,0.0,1.0, 0.0,0.5,0.5])
 
-for i in range(3):
+for i in range(3): #Gjør bare det at de tre siste nodene blir sånn de blir. endrer ikke på ex og ey her
     j = cyclic_ijk[i+1]
     k = cyclic_ijk[i+2]
     ex[i+3] = (ex[i] + ex[j])/2
     ey[i+3] = (ey[i] + ey[j])/2
 
-th = 0.1
+th = 0.1 #Tykkelse
 ep = [1,th]
 
 E  = 2.1e11
