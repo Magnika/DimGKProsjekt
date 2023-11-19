@@ -10,21 +10,21 @@ import numpy as np
 import triangles_with_TODO as tri
 
 # ----- Topology -------------------------------------------------
-ex = np.array([0.,1.,0.]) #Tøyningsvektor i x-rettnig
-ey = np.array([0.,0.,1.]) #Tøyningsvektor i y-rettning
+ex = np.array([0.,1.,0.]) #element x coordinates [x1, x2, x3]
+ey = np.array([0.,0.,1.]) #element y coordinates [y1, y2, y3]
 
-th = 0.1
+th = 0.1        #Element tykkhet
 ep = [1,th]
 
 E  = 2.1e11
-nu = 0.3
+nu = 0.3 # Poisson's ratio
 
-D = np.array([
+D = np.array([          #E matrise i kompendie. s=E*s Hvor s er spenningsvektor og e er tøyningsvektor
         [ 1.0,  nu,  0.],
         [  nu, 1.0,  0.],
         [  0.,  0., (1.0-nu)/2.0]]) * E/(1.0-nu**2)
 
-eq = [1.0, 3.0]
+eq = [1.0, 3.0] #distributed loads, local directions [bx, by]
 
 
 Ke, fe = tri.tri3_Kmatrix(ex,ey,D,th,eq)
