@@ -39,7 +39,7 @@ endLoadXY = np.array([0.0,3.0e6])
 
 ep = [1,thickness]
 E  = 2.1e11
-nu = 0.3
+nu = 0.3 #Nice i rapporten å påpeke at man får spenningskonsentrasjon i z rettning i hjørnene på grunn av denne
 Dmat = np.array([
         [ 1.0,  nu,  0.],
         [  nu, 1.0,  0.],
