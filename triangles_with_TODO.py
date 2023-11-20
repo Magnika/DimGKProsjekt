@@ -172,7 +172,7 @@ def tri6_shape_functions(zeta):
     for i in range(3):
         j = cyclic_ijk[i + 1]
         N6[i] = zeta[i]*(2*zeta[i] - 1)
-        N6[i + 2] = 4*zeta[i]*zeta[j]
+        N6[i + 3] = 4*zeta[i]*zeta[j]
 
 
     return N6
@@ -187,7 +187,14 @@ def tri6_shape_function_partials_x_and_y(zeta,ex,ey):
     
     cyclic_ijk = [0,1,2,0,1]      # Cyclic permutation of the nodes i,j,k
 
-    # TODO: fill out missing parts (or reformulate completely)
+    for i in range(3):          #Bruker dN/dx = dN/dz * dz/dx
+        j = cyclic_ijk[i +1]
+
+        N6_px[i] = (4*zeta[i] - 1)*zeta_px[i] 
+        N6_py[i] = (4*zeta[i] - 1)*zeta_py[i]
+
+        N6_px[i+3] = 4*(zeta[j]*zeta_px[i] + zeta[i]*zeta_px[j])
+        N6_py[i+3] = 4*(zeta[j]*zeta_py[i] + zeta[i]*zeta_py[j])
 
     return N6_px, N6_py
 
@@ -209,7 +216,7 @@ def tri6_Kmatrix(ex,ey,D,th,eq=None):
                         [0.0,0.5,0.5],
                         [0.5,0.0,0.5]])
     
-    wInt = np.array([1.0/3.0,1.0/3.0,1.0/3.0])
+    wInt = np.array([1.0/3.0,1.0/3.0,1.0/3.0]) # Vektene
 
     A    = tri6_area(ex,ey)
 
