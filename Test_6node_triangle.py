@@ -36,11 +36,11 @@ eq = [1.0, 3.0]
 #Ke, fe = tri.plante(ex,ey,ep,D,eq)
 
 Ke = np.zeros((12,12))
-fe = np.zeros((12,1))
+fe = np.zeros((12,1)) #Krefter i nodene
 
 
 
-rigX = np.zeros((12,1))
+rigX = np.zeros((12,1)) #Tror dette er forskyvninger
 rigY = np.zeros((12,1))
 rigR = np.zeros((12,1))
 
