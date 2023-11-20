@@ -204,8 +204,13 @@ def tri6_Bmatrix(zeta,ex,ey):
     nx,ny = tri6_shape_function_partials_x_and_y(zeta, ex, ey)
 
     Bmatrix = np.zeros((3,12))
+    
+    for j in range(6): #Fyller inn B matrisen med dN/dx og dN/dy
+        Bmatrix[0][j*2] = nx[j]
+        Bmatrix[1][j*2+1] = ny[j]
+        Bmatrix[2][j*2] = ny[j]
+        Bmatrix[2][j*2+1] = nx[j]
 
-    # TODO: fill out missing parts (or reformulate completely)
 
     return Bmatrix
 
