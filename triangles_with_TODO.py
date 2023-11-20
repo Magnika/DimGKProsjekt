@@ -138,7 +138,13 @@ def zeta_partials_x_and_y(ex,ey):
     zeta_px = np.zeros(3)           # Partial derivative with respect to x
     zeta_py = np.zeros(3)           # Partial derivative with respect to y
 
-    # TODO: fill out missing parts (or reformulate completely)
+    
+    #Dette blir bare samme som for 3 noder
+    for i in range(3):
+        j = cyclic_ijk[i + 1]
+        k = cyclic_ijk[i + 2]
+        zeta_px[i] = (ey[j] - ey[k]) / A2
+        zeta_py[i] = (ex[k] - ex[j]) / A2
 
     return zeta_px, zeta_py
 
