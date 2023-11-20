@@ -227,23 +227,25 @@ def tri6_Kmatrix(ex,ey,D,th,eq=None):
 
     Ke = np.zeros((12,12))
 
-    # TODO: fill out missing parts (or reformulate completely)
+    Ke = np.zeros((12, 12))
 
-    # TODO: remove this
-    Ke = np.eye(12) * 1.0e6
+    for i in range(3): #Bruker zetaInt til å få midtpunktene på kantene til trekanten og regner ut B med disse 3.
+        zeta = zetaInt[i]
+        w = wInt[i]
+        B = tri6_Bmatrix(zeta, ex, ey)
+        Ke += (B.T @ D @ B) * w * A * th
+
 
     if eq is None:
         return Ke
     else:
-        fe = np.zeros((12,1))
+        fe = np.zeros((12,1))  
 
-        # TODO: fill out missing parts (or reformulate completely)
+        for i in range(3):      #fe = integrale over N*q dV
+            N = tri6_shape_functions(zetaInt[i])
+            w = wInt[i]
+            for j in range(6):
+                fe[2*j] = A*th*w*N[j]*eq[0]
+                fe[2*j + 1] = A*th*w*N[j]*eq[1]
 
         return Ke, fe
-
-
-
-
-
-
-  
