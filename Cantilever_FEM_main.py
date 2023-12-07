@@ -8,7 +8,7 @@ import numpy as np
 #import triangles_LF as tri
 import triangles_with_TODO as tri
 #import quads_LF_bh as quad
-import quads_with_TODO as quad
+import Quads as quad
 import fem_utilities as fem_util
 import fem_models
 
